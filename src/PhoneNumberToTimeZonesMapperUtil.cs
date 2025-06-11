@@ -16,7 +16,7 @@ public sealed class PhoneNumberToTimeZonesMapperUtil : IPhoneNumberToTimeZonesMa
     {
         _client = new AsyncSingleton<PhoneNumberToTimeZonesMapper>(() =>
         {
-            logger.LogDebug("Instantiating libphonenumber (PhoneNumberUtil)...");
+            logger.LogDebug("Instantiating PhoneNumberToTimeZonesMapper...");
 
             return PhoneNumberToTimeZonesMapper.GetInstance();
         });
