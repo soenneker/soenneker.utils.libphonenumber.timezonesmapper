@@ -14,7 +14,7 @@
         <AssemblyName>Soenneker.Utils.Libphonenumber.TimeZonesMapper</AssemblyName>
         <PackageId>Soenneker.Utils.Libphonenumber.TimeZonesMapper</PackageId>
         <PackageTags>utils libphonenumber timezonesmapper timezones mapper area code singleton threadsafe phonenumbertotimezonesmapperutil util csharp dotnet c# .net</PackageTags>
-        <Copyright>Copyright © 2025 Jake Soenneker</Copyright>
+        <Copyright>Copyright © 2025-2026 Jake Soenneker</Copyright>
         <Authors>Jake Soenneker</Authors>
         <Company>https://soenneker.com</Company>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
