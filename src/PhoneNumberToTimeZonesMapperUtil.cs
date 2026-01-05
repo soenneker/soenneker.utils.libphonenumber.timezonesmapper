@@ -11,15 +11,19 @@ namespace Soenneker.Utils.Libphonenumber.TimeZonesMapper;
 public sealed class PhoneNumberToTimeZonesMapperUtil : IPhoneNumberToTimeZonesMapperUtil
 {
     private readonly AsyncSingleton<PhoneNumberToTimeZonesMapper> _client;
+    private readonly ILogger<PhoneNumberToTimeZonesMapperUtil> _logger;
 
     public PhoneNumberToTimeZonesMapperUtil(ILogger<PhoneNumberToTimeZonesMapperUtil> logger)
     {
-        _client = new AsyncSingleton<PhoneNumberToTimeZonesMapper>(() =>
-        {
-            logger.LogDebug("Instantiating PhoneNumberToTimeZonesMapper...");
+        _logger = logger;
+        _client = new AsyncSingleton<PhoneNumberToTimeZonesMapper>(CreateMapper);
+    }
 
-            return PhoneNumberToTimeZonesMapper.GetInstance();
-        });
+    private PhoneNumberToTimeZonesMapper CreateMapper()
+    {
+        _logger.LogDebug("Instantiating PhoneNumberToTimeZonesMapper...");
+
+        return PhoneNumberToTimeZonesMapper.GetInstance();
     }
 
     public ValueTask<PhoneNumberToTimeZonesMapper> Get(CancellationToken cancellationToken = default)
