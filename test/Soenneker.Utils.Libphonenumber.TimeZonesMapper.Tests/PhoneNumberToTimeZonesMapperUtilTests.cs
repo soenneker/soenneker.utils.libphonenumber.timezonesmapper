@@ -1,20 +1,19 @@
-﻿using Soenneker.Utils.Libphonenumber.TimeZonesMapper.Abstract;
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Utils.Libphonenumber.TimeZonesMapper.Abstract;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Utils.Libphonenumber.TimeZonesMapper.Tests;
 
-[Collection("Collection")]
-public sealed class PhoneNumberToTimeZonesMapperUtilTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public sealed class PhoneNumberToTimeZonesMapperUtilTests : HostedUnitTest
 {
     private readonly IPhoneNumberToTimeZonesMapperUtil _util;
 
-    public PhoneNumberToTimeZonesMapperUtilTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public PhoneNumberToTimeZonesMapperUtilTests(Host host) : base(host)
     {
         _util = Resolve<IPhoneNumberToTimeZonesMapperUtil>(true);
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
