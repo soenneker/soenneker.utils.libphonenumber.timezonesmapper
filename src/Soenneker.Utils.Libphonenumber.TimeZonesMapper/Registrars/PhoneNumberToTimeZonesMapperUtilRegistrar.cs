@@ -12,6 +12,7 @@ public static class PhoneNumberToTimeZonesMapperUtilRegistrar
     /// <summary>
     /// Adds <see cref="IPhoneNumberToTimeZonesMapperUtil"/> as a singleton service. <para/>
     /// </summary>
+    /// <returns>Adds <see cref="IPhoneNumberToTimeZonesMapperUtil"/> as a singleton service. <para/>.</returns>
     public static IServiceCollection AddPhoneNumberToTimeZonesMapperUtilAsSingleton(this IServiceCollection services)
     {
         services.TryAddSingleton<IPhoneNumberToTimeZonesMapperUtil, PhoneNumberToTimeZonesMapperUtil>();
@@ -22,6 +23,7 @@ public static class PhoneNumberToTimeZonesMapperUtilRegistrar
     /// <summary>
     /// Adds <see cref="IPhoneNumberToTimeZonesMapperUtil"/> as a scoped service. <para/>
     /// </summary>
+    /// <returns>Adds <see cref="IPhoneNumberToTimeZonesMapperUtil"/> as a scoped service. <para/>.</returns>
     public static IServiceCollection AddPhoneNumberToTimeZonesMapperUtilAsScoped(this IServiceCollection services)
     {
         services.TryAddScoped<IPhoneNumberToTimeZonesMapperUtil, PhoneNumberToTimeZonesMapperUtil>();

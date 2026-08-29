@@ -11,9 +11,9 @@ namespace Soenneker.Utils.Libphonenumber.TimeZonesMapper.Abstract;
 public interface IPhoneNumberToTimeZonesMapperUtil : IAsyncDisposable, IDisposable
 {
     /// <summary>
-    /// Gets the value.
+    /// Returns the lazily initialized phone-number-to-time-zone mapper.
     /// </summary>
-    /// <param name="cancellationToken">The cancellation token.</param>
-    /// <returns>A task containing the result of the operation.</returns>
+    /// <param name="cancellationToken">Signals that the operation should stop.</param>
+    /// <returns>The shared time-zone mapper.</returns>
     ValueTask<PhoneNumberToTimeZonesMapper> Get(CancellationToken cancellationToken = default);
 }
