@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Soenneker.Utils.Libphonenumber.TimeZonesMapper;
 
-/// <inheritdoc cref="IPhoneNumberToTimeZonesMapperUtil"/>
 public sealed class PhoneNumberToTimeZonesMapperUtil : IPhoneNumberToTimeZonesMapperUtil
 {
     private readonly AsyncSingleton<PhoneNumberToTimeZonesMapper> _client;
@@ -31,18 +30,11 @@ public sealed class PhoneNumberToTimeZonesMapperUtil : IPhoneNumberToTimeZonesMa
         return _client.Get(cancellationToken);
     }
 
-    /// <summary>
-    /// Releases resources used by the current instance.
-    /// </summary>
     public void Dispose()
     {
         _client.Dispose();
     }
 
-    /// <summary>
-    /// Asynchronously releases resources used by the current instance.
-    /// </summary>
-    /// <returns>A task that represents the asynchronous operation.</returns>
     public ValueTask DisposeAsync()
     {
         return _client.DisposeAsync();

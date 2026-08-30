@@ -22,8 +22,27 @@ services.AddPhoneNumberToTimeZonesMapperUtilAsSingleton();
 
 Then inject `IPhoneNumberToTimeZonesMapperUtil` wherever you need it.
 
-## Common operations
+## Map a parsed number
 
-- `Get()` - Gets the value.
-- `Dispose()` - Releases resources used by the current instance.
-- `DisposeAsync()` - Asynchronously releases resources owned by the timezone mapper; await it when the mapper's lifetime ends.
+```csharp
+using PhoneNumbers;
+
+PhoneNumber number = PhoneNumberUtil.GetInstance().Parse("+1 212 555 0100", null);
+PhoneNumberToTimeZonesMapper mapper = await mapperUtil.Get(cancellationToken);
+
+IList<string> timeZoneIds = mapper.GetTimeZonesForNumber(number);
+```
+
+The mapper accepts a parsed `PhoneNumber`, not raw text. Use `PhoneNumberUtil.Parse` first and
+validate the number when the result will drive application behavior.
+
+A number can map to multiple time-zone IDs because numbering regions and area codes can span
+zones. The result is geographic metadata, not the subscriber's live location. Unsupported or
+insufficiently specific numbers can produce the library's unknown-zone result, so callers should
+not assume the collection contains one usable local system time zone.
+
+`Get` lazily returns the shared `PhoneNumberToTimeZonesMapper` supplied by
+libphonenumber-csharp. The cancellation token applies while obtaining the lazy value; mapping is
+synchronous after that. The scoped registrar changes the wrapper lifetime but does not create a
+separate underlying mapper. Let dependency injection dispose the wrapper; callers do not own the
+returned mapper.
