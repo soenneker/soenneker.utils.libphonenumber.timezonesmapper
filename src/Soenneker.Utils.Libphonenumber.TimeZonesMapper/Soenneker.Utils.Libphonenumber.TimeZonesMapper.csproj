@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <Description>An async thread-safe singleton for a libphonenumber-csharp PhoneNumberToTimeZonesMapper instance</Description>
+        <Description>Provides PhoneNumberToTimeZonesMapper for mapping parsed phone numbers to geographic time-zone IDs.</Description>
         <Version Condition="'$(BUILD_VERSION)' == ''">4.0.0</Version>
         <Version Condition="'$(BUILD_VERSION)' != ''">$(BUILD_VERSION)</Version>
         <AssemblyName>Soenneker.Utils.Libphonenumber.TimeZonesMapper</AssemblyName>
