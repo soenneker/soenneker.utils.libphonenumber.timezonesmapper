@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Soenneker.Utils.Libphonenumber.TimeZonesMapper;
 
+/// <inheritdoc cref="IPhoneNumberToTimeZonesMapperUtil" />
 public sealed class PhoneNumberToTimeZonesMapperUtil : IPhoneNumberToTimeZonesMapperUtil
 {
     private readonly AsyncSingleton<PhoneNumberToTimeZonesMapper> _client;
